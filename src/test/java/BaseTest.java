@@ -19,7 +19,6 @@ public class BaseTest {
         options.addArguments("--window-size=1920,1080");
         options.addArguments("--guest");
 
-
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(7));
         loginPage = new LoginPage(driver);

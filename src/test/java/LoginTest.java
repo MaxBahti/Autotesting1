@@ -20,6 +20,3 @@ public class LoginTest extends BaseTest {
         assertTrue(productsPage.isPageLoaded(), "Register btn is not visible");
     }
 }
-
-
-
