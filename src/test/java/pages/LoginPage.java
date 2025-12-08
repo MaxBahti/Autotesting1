@@ -23,11 +23,9 @@ public class LoginPage extends BasePage {
         driver.findElement(loginBtn).click();
     }
 
-
     public void enterLoginName(final String userName) {
         driver.findElement(userField).sendKeys(userName);
     }
-
 
     public boolean isErrorMsgAppear() {
         return driver.findElement(error).isDisplayed();
