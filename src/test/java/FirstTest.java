@@ -14,7 +14,7 @@ public class FirstTest {
 
         WebDriver browser = new ChromeDriver();
         browser.get("https://www.sharelane.com/cgi-bin/register.py");
-        browser.findElement(By.cssSelector("[name='zip_code']")).sendKeys("qwerty");
+        browser.findElement(By.cssSelector("[name='zip_code']")).sendKeys("1234");
         browser.findElement(By.cssSelector("[value='Continue']")).click();
 
         boolean isErrorAppear = browser.findElement(By.cssSelector(".error_message")).isDisplayed();
@@ -32,7 +32,7 @@ public class FirstTest {
 
         WebDriver browser = new ChromeDriver();
         browser.get("https://www.sharelane.com/cgi-bin/register.py");
-        browser.findElement(By.cssSelector("[name='zip_code']")).sendKeys("123456");
+        browser.findElement(By.cssSelector("[name='zip_code']")).sendKeys("12345");
         browser.findElement(By.cssSelector("[value='Continue']")).click();
 
         boolean isRegisterBtnExist = browser.findElement(By.cssSelector("[value='Register']")).isDisplayed();
@@ -41,4 +41,3 @@ public class FirstTest {
         browser.quit();
     }
 }
-
