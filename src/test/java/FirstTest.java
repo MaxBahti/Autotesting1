@@ -1,43 +1,55 @@
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
 
 public class FirstTest {
-    @Test
-    public void checkZipCodeInput() {
-        //1 открыть браузер
-        //зайти на сайт
 
-        WebDriver browser = new ChromeDriver();
-        browser.get("https://www.sharelane.com/cgi-bin/register.py");
-        browser.findElement(By.cssSelector("[name='zip_code']")).sendKeys("1234");
-        browser.findElement(By.cssSelector("[value='Continue']")).click();
+    //КРАТНО 3, ВОЗВРАЩАТЬ 'I'
+    //КРАТНО 5, ВОЗВРАЩАТЬ 'F'
+    //КРАТНО 3 И 5, ВОЗВРАЩАТЬ 'A'
+    //ВОЗВРАЩАТЬ 'T'
 
-        boolean isErrorAppear = browser.findElement(By.cssSelector(".error_message")).isDisplayed();
-        assertTrue(isErrorAppear, "Error message does not appear");
+    public String trialCode(int number) {
+        if (number % 3 == 0 && number % 5 == 0) {
+            return "A";
+        } else if (number % 5 == 0) {
+            return "F";
+        } else if (number % 3 == 0) {
+            return "I";
 
-        String errorMessageText = browser.findElement(By.cssSelector(".error_message")).getText();
-        assertEquals(errorMessageText, "Oops, error on page. ZIP code should have 5 digits");
-        browser.quit();
+        } else return "T";
     }
 
     @Test
-    public void checkZipCodeFiveDigitInput() {
-        //1 открыть браузер
-        //зайти на сайт
+    public void checkIfatNumber() {
+        String actualResult = trialCode(9);
+        assertEquals(actualResult, "I", "Ожидалось другое значение");
+    }
 
-        WebDriver browser = new ChromeDriver();
-        browser.get("https://www.sharelane.com/cgi-bin/register.py");
-        browser.findElement(By.cssSelector("[name='zip_code']")).sendKeys("12345");
-        browser.findElement(By.cssSelector("[value='Continue']")).click();
+    @Test
+    public void checkIfatFiveNumber() {
+        String actualResult = trialCode(25);
+        assertEquals(actualResult, "F", "Ожидалось другое значение");
+    }
 
-        boolean isRegisterBtnExist = browser.findElement(By.cssSelector("[value='Register']")).isDisplayed();
-        assertTrue(isRegisterBtnExist, "Register btn is not visible");
+    @Test
+    public void checkIfatBothNumber() {
+        String actualResult = trialCode(15);
+        assertEquals(actualResult, "A", "Ожидалось другое значение");
+    }
 
-        browser.quit();
+    @Test
+    public void checkIfatNoneNumber() {
+        String actualResult = trialCode(19);
+        assertEquals(actualResult, "T", "Ожидалось другое значение");
     }
 }
+
+
+
+
+
+
+
+
+
