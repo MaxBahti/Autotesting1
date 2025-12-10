@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 /**
- * Данная страница описывает функционал Двитрины стр
+ * Данная страница описывает функционал витрины стр
  */
 public class ProductsPage extends BasePage {
     By pageTitle = By.xpath("//*[@data-test='title']");
@@ -18,11 +18,6 @@ public class ProductsPage extends BasePage {
 
     public ProductsPage(WebDriver driver) {
         super(driver);
-    }
-
-    public boolean isPageLoaded(final String pageTitle) {
-        // wait.until(ExpectedConditions.visibilityOfElementLocated(pageTitle));
-        return driver.findElement(By.xpath(TEXT_LOCATOR_PATTERN.formatted(pageTitle))).isDisplayed();
     }
 
     public void addToCart(final String goodsName) {
@@ -39,7 +34,7 @@ public class ProductsPage extends BasePage {
         return driver.findElement(cartBadge).getText();
     }
 
-    public String checkGoodsQuantitytttt() {
-        return driver.findElement(cartBadge).getDomAttribute("data-test");
+    public void switchToCart() {
+        driver.findElement(cartBadge).click();
     }
 }
