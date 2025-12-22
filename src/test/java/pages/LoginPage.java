@@ -1,7 +1,9 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import user.User;
 
 public class LoginPage extends BasePage {
     By userField = By.cssSelector("[placeholder='Username']");
@@ -17,13 +19,15 @@ public class LoginPage extends BasePage {
         driver.get(BASE_URL);
     }
 
-    public void open(String url) {
-        driver.get(BASE_URL + url);
+    public void login(User user) {
+        enterLoginName(user.getEmail());
+        driver.findElement(passwordField).sendKeys(user.getPassword());
+        driver.findElement(loginBtn).click();
     }
 
-    public void login(final String userName, final String passwordName) {
-        enterLoginName(userName);
-        driver.findElement(passwordField).sendKeys(passwordName);
+    public void login(String user, String pass) {
+        enterLoginName(user);
+        driver.findElement(passwordField).sendKeys(pass);
         driver.findElement(loginBtn).click();
     }
 

@@ -4,17 +4,15 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 /**
- * Данная страница описывает функционал витрины стр
+ * Данная страница описывает функционал витрины с товарами
  */
 public class ProductsPage extends BasePage {
-    By pageTitle = By.xpath("//*[@data-test='title']");
-
     private static final String ADD_TO_CART_BUTTON_PATTERN =
             "//div[text()='%s']//ancestor::div[@class='inventory_item']//button";
     private static final String DATA_TEST_PATTERN =
             "[data-test='%s']";
 
-    By cartBadge = By.xpath("//*[@data-test='shopping-cart-badge']");
+    By cartBadge = By.cssSelector(DATA_TEST_PATTERN.formatted("shopping-cart-badge"));
 
     public ProductsPage(WebDriver driver) {
         super(driver);
